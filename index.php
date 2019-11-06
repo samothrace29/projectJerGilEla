@@ -30,7 +30,7 @@
 
 <form action="#" method="POST">
 
-<input type="search" name="search" value="" placeholder="Enter a movie you want to search">
+<input type="search" id="search" name="search" value="" placeholder="Search">
 <input type="submit" name="submit">
 </form>
 
