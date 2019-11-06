@@ -31,15 +31,15 @@
             <label>Category:</label>
             <br>
             <select name = "category">
-                <option value="" selected disabled hidden>Choose category here</option>
-                <option value = "drama">Drama</option>
-                <option value = "thriller">Thriller</option>
-                <option value = "comedy">Comedy</option>
-                <option value = "scifi">Science Fiction</option>
-                <option value = "fantasy">Fantasy</option>
-                <option value = "action">Action</option>
-                <option value = "romance">Romance</option>
-                <option value = "horror">Horror</option>
+                <option value ="" selected disabled hidden>Choose category here</option>
+                <option value = "drama" name = "drama">Drama</option>
+                <option value = "thriller" name = "">Thriller</option>
+                <option value = "comedy" name = "">Comedy</option>
+                <option value = "scifi" name = "">Science Fiction</option>
+                <option value = "fantasy" name = "">Fantasy</option>
+                <option value = "action" name = "">Action</option>
+                <option value = "romance" name = "">Romance</option>
+                <option value = "horror" name = "">Horror</option>
             </select>
             <br>
             <input type="submit" name="submit" value="Submit New Movie">
