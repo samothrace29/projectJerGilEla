@@ -73,6 +73,7 @@
 </html>
 
 <?php
+include 'function.php';
 
 if (!empty($_POST)) {
 	// Basics validations
@@ -84,13 +85,21 @@ if (!empty($_POST)) {
 	}
 	if (count($errors) === 0) {
 		// If no errors, insert into DB
-        require_once 'database.php';
+       
         
 		// Open a connection to the DBMS
-		$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
+		//$connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD, DB_NAME);
         $query = "INSERT INTO movies(title, release_year, synopsis) VALUES('" . $_POST['title'] . "', '" . $_POST['year'] . "')";
-		// Send an SQL request to our DB
-		$result_query = mysqli_query($connect, $query);
+        // Send an SQL request to our DB
+        
+        $result_query = queryDatabase($query); //var_dump($categories); 
+            
+        /*for ( $i=0 ; $i< count ($categories); $i++ ) { 
+            echo $categories[$i]['category'];
+        }
+*/
+
+		//$result_query = mysqli_query($connect, $query);
 		if ($result_query) {
 			echo 'Movie successfully addded !';
 		} else {
