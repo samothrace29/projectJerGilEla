@@ -1,0 +1,121 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.logRegModal-Content {
+  position: relative;
+  display: none;
+  width: 600px;
+  font-weight: 500;
+  margin: auto;
+  margin-top: 30px;
+  color: lightsalmon;
+  background-color: lightblue;
+}
+
+.logRegModal-Title {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.logRegModal-hr {
+  margin: 0;
+}
+
+.logRegModal-input {
+  width: 100%;
+  border: 2px solid #2BBBAD;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom-right-radius: 15px;
+  background-color: lightblue;
+  color: #2BBBAD;
+}
+
+.logRegModal-input::-webkit-input-placeholder,
+.logRegModal-input:-webkit-autofill,
+.logRegModal-input:-webkit-autofill:hover,
+.logRegModal-input:-webkit-autofill:focus {
+  border: 3px solid lightblue;
+  border-top: 0;
+  border-left: 0;
+  padding-left: 5px;
+  border-bottom-right-radius: 15px;
+  -webkit-text-fill-color: #2BBBAD;
+  -webkit-box-shadow: 0 0 0px 1000px lightblue inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.logRegModal-input::placeholder,
+.logRegModal-input:-webkit-autofill,
+.logRegModal-input:-webkit-autofill:hover,
+.logRegModal-input:-webkit-autofill:focus {
+  border: 3px solid lightblue;
+  border-top: 0;
+  border-left: 0;
+  padding-left: 5px;
+  border-bottom-right-radius: 15px;
+  -webkit-text-fill-color: #2BBBAD;
+  -webkit-box-shadow: 0 0 0px 1000px lightblue inset;
+  -webkit-transition: background-color 5000s ease-in-out 0s;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.logRegModal-Informations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 400px;
+  width: 400px;
+  margin: auto;
+}
+
+.logRegModal-none {
+  display: none;
+}
+
+input[type="checkbox"] {
+  margin: auto 10px;
+}
+
+.logReg-div-Buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  left: 50%;
+  top: 0;
+  z-index: 1000;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.logReg-div-Buttons button {
+  width: 150px;
+  border-radius: 25px;
+}
+
+.logReg-div-Buttons i {
+  margin-right: 5px;
+}
+
+#submit_connection {
+  width: 100%;
+  margin: 0px;
+}
+
+#logReg_ModalID {
+  display: none;
+}
+/*# sourceMappingURL=loginregister.css.map */
