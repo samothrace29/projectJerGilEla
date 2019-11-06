@@ -38,8 +38,6 @@
                 <option value = "scifi" name = "">Science Fiction</option>
                 <option value = "fantasy" name = "">Fantasy</option>
                 <option value = "action" name = "">Action</option>
-                <option value = "romance" name = "">Romance</option>
-                <option value = "horror" name = "">Horror</option>
             </select>
             <br>
             <input type="submit" name="submit" value="Submit New Movie">
