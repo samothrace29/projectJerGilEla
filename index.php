@@ -47,28 +47,25 @@ if($db_found){
     $query= "SELECT * FROM movies";
 
     $result_query=mysqli_query($connect,$query);
-    var_dump($result_query);
-
+    
+echo '<section>';
     while ($movies = mysqli_fetch_assoc($result_query)){
 
-            $title=$movies['title'];
-            $release=$movies['release_year'];
-            $synopsis=$movies['synopsis'];
-            $category=$movies['category'];
-            $poster=$movies['poster'];
+        $category=$movies['category'];
+           
             
-            echo $category.'<br>';
-            
+         
 
 
 
 
     }
+echo '</section>';    
 $query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
 
     $result_query=mysqli_query($connect,$query);
-    var_dump($result_query);
-
+    
+echo '<section>';
     while ($movies = mysqli_fetch_assoc($result_query)){
         $title=$movies['title'];
         $release=$movies['release_year'];
@@ -76,13 +73,13 @@ $query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
         $category=$movies['category'];
         $poster=$movies['poster'];
  
-        
+    echo '<div>';    
     echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>";
     echo "<p> Title: $title </p>"; 
-            
+    echo '</div>' ;       
 
 }
-
+echo '</section>';
 }
 
 
