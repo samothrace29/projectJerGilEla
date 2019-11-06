@@ -18,6 +18,7 @@
 <body>
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
+    <?php include_once "function.php"; ?>
     
     <main>
         <h1>Categories</h1>
@@ -30,6 +31,7 @@
     <FORM class="formSelectCategories">
         <SELECT name="categorie_list" size="1">
             <OPTION>
+            <?php $categories = ftcGetCategoryList(); ?>
             <OPTION>science fiction
             <OPTION>comedie
             <OPTION>aventure

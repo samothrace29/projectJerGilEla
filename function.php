@@ -140,4 +140,55 @@ function checkUser(&$user) {
         
     }
     }
+
+    function queryDatabase($queryToRun){
+        $error = false;
+        if ( !empty ($queryToRun) ) {
+            
+            include_once "connect.php";
+
+            $connect = mysqli_connect (DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
+
+            if (!$connect) {
+                if ( DB_DEBUGGER ) {
+                    echo "Problem with server ... " ;
+                }
+            } else {
+                $result = mysqli_query ($connect,$queryToRun) ;
+                $resultToReturn = array();
+
+                if (!$result) {
+
+                    if ( DB_DEBUGGER ) {
+                        echo "SQL Error ... " . mysqli_error($connect);
+                    }
+                    $error = true;
+            
+                } else {   
+                    
+                    while ( $row = mysqli_fetch_assoc($result) ) {
+                        $resultToReturn[]=$row;
+                    }
+
+
+                }
+            
+                mysqli_close ($connect);
+                if ( !$error ) {
+                    return $resultToReturn;
+                }
+            
+            }   
+        } else {
+            return false;
+        }
+    };
+
+    function ftcGetCategoryList() {
+
+        $query = "select * from movies";
+        $result = queryDatabase($query);
+
+    }
+
 ?>
