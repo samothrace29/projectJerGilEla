@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 06, 2019 at 02:43 PM
+-- Generation Time: Nov 06, 2019 at 02:56 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -129,6 +129,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `mail` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL,
   `picture` varchar(255) DEFAULT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uniq_email` (`mail`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
@@ -137,9 +138,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `nickname`, `mail`, `password`, `picture`) VALUES
-(3, 'gilles_gilles', 'deh_deh_', 'myNick', 'dehautgilles@hotmail.com', '$2y$10$6sJ1q.uUrKyoIReKJfxXu.2x.foGc3gOEOZ0kS3VeOZIfx/OVBNvC', NULL),
-(7, 'firstname', 'lastname', 'dehautgilles2@hotmail.com', 'dehautgilles2@hotmail.com', '$2y$10$8LccTw16p2bd2r8aFZpj1euLVduujf4PrMmSKbT0DaL8TTducZSO6', '0a03de5b45021ca0738db1a558d3894fb2c20291.png');
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `nickname`, `mail`, `password`, `picture`, `admin`) VALUES
+(3, 'gilles_gilles', 'deh_deh_', 'myNick', 'dehautgilles@hotmail.com', '$2y$10$6sJ1q.uUrKyoIReKJfxXu.2x.foGc3gOEOZ0kS3VeOZIfx/OVBNvC', NULL, 0),
+(7, 'firstname', 'lastname', 'dehautgilles2@hotmail.com', 'dehautgilles2@hotmail.com', '$2y$10$8LccTw16p2bd2r8aFZpj1euLVduujf4PrMmSKbT0DaL8TTducZSO6', '0a03de5b45021ca0738db1a558d3894fb2c20291.png', 0);
 
 --
 -- Constraints for dumped tables
