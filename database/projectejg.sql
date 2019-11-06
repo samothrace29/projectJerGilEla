@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Nov 06, 2019 at 01:49 PM
+-- Generation Time: Nov 06, 2019 at 02:43 PM
 -- Server version: 5.7.26
 -- PHP Version: 7.2.18
 
@@ -30,10 +30,22 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `categories`;
 CREATE TABLE IF NOT EXISTS `categories` (
+  `category` varchar(60) NOT NULL,
   `category_id` int(11) NOT NULL AUTO_INCREMENT,
-  `category` int(11) NOT NULL,
   PRIMARY KEY (`category_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `categories`
+--
+
+INSERT INTO `categories` (`category`, `category_id`) VALUES
+('drama', 1),
+('fantasy', 2),
+('scifi', 3),
+('action', 4),
+('thriller', 5),
+('comedy', 6);
 
 -- --------------------------------------------------------
 
@@ -48,27 +60,29 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `release_year` int(11) NOT NULL,
   `synopsis` varchar(9999) DEFAULT NULL,
   `poster` varchar(200) DEFAULT NULL,
-  `category` varchar(99) DEFAULT NULL,
-  PRIMARY KEY (`movie_id`)
+  `file_location` varchar(99) DEFAULT NULL,
+  `category_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`movie_id`),
+  KEY `category_id` (`category_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `movies`
 --
 
-INSERT INTO `movies` (`movie_id`, `title`, `release_year`, `synopsis`, `poster`, `category`) VALUES
-(1, 'Marie Antoinette', 1990, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'marie.jpg', 'Drama'),
-(2, 'Pan\'s Labyrinth', 2006, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'pans.jpg', 'Fantasy'),
-(3, 'A.I. Artificial Intelligence', 2001, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'ai.jpg', 'Science Fiction'),
-(4, 'Inglourious Basterds', 2009, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'inglorious.jpg', 'Action'),
-(5, 'Harry Potter', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'harry.jpg', 'Fantasy'),
-(6, 'I spit on your grave', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'spit.jpg', 'Thriller'),
-(7, 'Titanic', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'titanic.jpg', 'Drama'),
-(8, 'Kung Fu Hustle', 2004, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'kung.jpg', 'Comedy'),
-(9, 'Inception', 2004, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'inception.jpg', 'Action'),
-(10, 'Hangover', 1998, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'hangover.jpg', 'Comedy'),
-(11, 'Star Trek', 1987, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'star.jpg', 'Science Fiction'),
-(12, 'Cabin in the woods', 1997, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'cabin.jpg', 'Thriller');
+INSERT INTO `movies` (`movie_id`, `title`, `release_year`, `synopsis`, `poster`, `file_location`, `category_id`) VALUES
+(1, 'Marie Antoinette', 1990, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'marie.jpg', '', 1),
+(2, 'Pan\'s Labyrinth', 2006, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'pans.jpg', '', 2),
+(3, 'A.I. Artificial Intelligence', 2001, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'ai.jpg', '', 3),
+(4, 'Inglourious Basterds', 2009, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'inglorious.jpg', '', 4),
+(5, 'Harry Potter', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'harry.jpg', '', 2),
+(6, 'I spit on your grave', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'spit.jpg', '', 5),
+(7, 'Titanic', 2019, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'titanic.jpg', '', 1),
+(8, 'Kung Fu Hustle', 2004, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'kung.jpg', '', 6),
+(9, 'Inception', 2004, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'inception.jpg', '', 4),
+(10, 'Hangover', 1998, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'hangover.jpg', '', 6),
+(11, 'Star Trek', 1987, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'star.jpg', '', 3),
+(12, 'Cabin in the woods', 1997, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula lacus leo, eu vestibulum tortor convallis sit amet. Donec libero augue, laoreet at euismod ac, tempus eget diam. Phasellus semper finibus ex, nec pulvinar mi tincidunt vel.', 'cabin.jpg', '', 5);
 
 -- --------------------------------------------------------
 
@@ -130,6 +144,12 @@ INSERT INTO `users` (`id`, `firstname`, `lastname`, `nickname`, `mail`, `passwor
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `movies`
+--
+ALTER TABLE `movies`
+  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`category_id`);
 
 --
 -- Constraints for table `movies_playlist`
