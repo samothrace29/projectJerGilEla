@@ -29,17 +29,17 @@
 <div class="categories_div_header">
     <h4>Managing Categories</h4>
     <FORM class="formSelectCategories">
-        <SELECT name="categorie_list" size="1">
-            <OPTION>
+        <SELECT id="categorie_list" name="categorie_list" size="1">
 
             <!-- $query = "select * from categories";
         //$result = queryDatabase($query);
         return queryDatabase($query); -->
 
+            <OPTION value="">
             <?php $categories = queryDatabase("select * from categories"); //var_dump($categories); 
             
             for ( $i=0 ; $i< count ($categories); $i++ ) { ?>
-                <OPTION><?php echo $categories[$i]['category']; ?>
+                <OPTION value="<?php echo $categories[$i]['category']; ?>"><?php echo $categories[$i]['category']; ?>
                 
             <?php }
             
@@ -85,6 +85,7 @@
 
 <script src="./script/loginregister.js"></script>
 <script src="./script/modal.js"></script>
+<script src="./script/categories.js"></script>
 
 
 </body>
