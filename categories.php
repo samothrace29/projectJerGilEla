@@ -31,11 +31,19 @@
     <FORM class="formSelectCategories">
         <SELECT name="categorie_list" size="1">
             <OPTION>
-            <?php $categories = ftcGetCategoryList(); ?>
-            <OPTION>science fiction
-            <OPTION>comedie
-            <OPTION>aventure
-            <OPTION>thriller
+
+            <!-- $query = "select * from categories";
+        //$result = queryDatabase($query);
+        return queryDatabase($query); -->
+
+            <?php $categories = queryDatabase("select * from categories"); //var_dump($categories); 
+            
+            for ( $i=0 ; $i< count ($categories); $i++ ) { ?>
+                <OPTION><?php echo $categories[$i]['category']; ?>
+                
+            <?php }
+            
+            ?>
         </SELECT>
 
     </FORM>

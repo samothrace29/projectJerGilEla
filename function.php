@@ -150,18 +150,20 @@ function checkUser(&$user) {
             $connect = mysqli_connect (DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
 
             if (!$connect) {
-                if ( DB_DEBUGGER ) {
+                if ( defined  ( 'DB_DEBUGGER' ) ) {
                     echo "Problem with server ... " ;
                 }
+                
             } else {
                 $result = mysqli_query ($connect,$queryToRun) ;
                 $resultToReturn = array();
 
                 if (!$result) {
 
-                    if ( DB_DEBUGGER ) {
+                    if (defined  ( 'DB_DEBUGGER' )) {
                         echo "SQL Error ... " . mysqli_error($connect);
                     }
+                    
                     $error = true;
             
                 } else {   
@@ -169,26 +171,30 @@ function checkUser(&$user) {
                     while ( $row = mysqli_fetch_assoc($result) ) {
                         $resultToReturn[]=$row;
                     }
-
-
+                    
+                    
                 }
-            
+                
                 mysqli_close ($connect);
                 if ( !$error ) {
                     return $resultToReturn;
                 }
-            
+                
             }   
         } else {
+            
+            if ( defined  ( 'DB_DEBUGGER' ) ) {
+                echo " \$queryToRun is empty " . mysqli_error($connect);
+            }
             return false;
         }
     };
 
     function ftcGetCategoryList() {
 
-        $query = "select * from movies";
-        $result = queryDatabase($query);
-
+        $query = "select * from categories";
+        //$result = queryDatabase($query);
+        return queryDatabase($query);
     }
 
 ?>
