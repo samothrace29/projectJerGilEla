@@ -17,9 +17,9 @@
         <a class="nav-link" href="#!" id="idRegisterModal">Register</a>
       </li>
       <?php } ?>
-    <li class="nav-item">
+    <!-- <li class="nav-item">
       <a class="nav-link" href="myAccount.php">Check</a>
-    </li>
+    </li> -->
     <?php 
     //session_start();
 
@@ -47,7 +47,13 @@
 ?>
     
     <li class="nav-item">
-      <a class="nav-link" href="products.php">products</a>
+      <a class="nav-link" href="movies.php">movies</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="categories.php">categories</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="addMovies.php">add movie</a>
     </li>
   </ul>
   <?php if ( isset ( $_SESSION['firstName'] ) ) { ?> 
