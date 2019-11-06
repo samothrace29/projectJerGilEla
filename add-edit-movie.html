@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="../style/add-edit-movies.css">
+    <title>Add/Edit Movies</title>
+</head>
+
+<body>
+    <main>
+        <div id="addMovie">
+            <h2>Add a new movie to the database</h2>
+
+	        <form method="POST">
+
+		    <h3>Movie Title</h3>
+		    <input type="text" name="title" placeholder="title"><br>
+		    <h3>Movie Release Year</h3>
+            <input type="date" name="year"><br><br>
+            <h3>Synopsis</h3>
+            <textarea name="synopsis" id="" cols="30" rows="10"></textarea>
+            <br>
+            <h3>Category</h3>
+            <input type="text" name="category" >
+            <input type="submit" name="submit" value="submit">
+        </div>
+        
+    </form>
+
+    <h3>Movie Poster</h3>
+    <form enctype="multipart/form-data" action="" method="post">
+        <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+        <br>
+        Select a file: <input type="file" name="my_file">
+        <br>
+        <input type="submit" name="send-file" value="send the file">
+    </form>
+    </main>
+</body>
+
+</html>
