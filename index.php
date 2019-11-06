@@ -18,7 +18,7 @@
 <body>
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
-    
+<main>    
 <h1> Welcome to the Project Page of Elaine, Gilles Victor André and Jérôme</h1>
 
 <p>Go Speed Racer. Go Speed Racer. Go Speed Racer go! Well we're movin' on up to the east side. To a deluxe apartment in the sky. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name. And they're always glad you came. Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm walking on air. I never thought I could feel so free! Boy the way Glen Miller played. Songs that made the hit parade. Guys like us we had it made. Those were the days! Here's the story of a man named Brady who was busy with three boys of his own.</p>
@@ -44,17 +44,18 @@ $db_found = mysqli_select_db($connect,'projectejg');
 
 if($db_found){
 
-    $query= "SELECT * FROM movies";
+    $query= "SELECT c.category , count(*) FROM movies m join categories c on m.category_id = c.category_id group by c.category";
 
     $result_query=mysqli_query($connect,$query);
     
 echo '<section>';
     while ($movies = mysqli_fetch_assoc($result_query)){
-
+        
         $category=$movies['category'];
-           
-            
-         
+        $catcun=$movies['count(*)'];
+        echo '<div>';
+        echo "<a href=>$category($catcun) </a>";
+        echo '</div>';
 
 
 
@@ -70,7 +71,7 @@ echo '<section>';
         $title=$movies['title'];
         $release=$movies['release_year'];
         $synopsis=$movies['synopsis'];
-        $category=$movies['category'];
+        $category=$movies['category_id'];
         $poster=$movies['poster'];
  
     echo '<div>';    
@@ -87,7 +88,7 @@ echo '</section>';
 ?>    
 
 
-
+</main>
     <!-- JQuery -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <!-- Bootstrap tooltips -->

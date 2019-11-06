@@ -1,17 +1,33 @@
+main {
+  width: 1200px;
+  margin: auto;
+}
+
 h1 {
   margin: 50px;
   color: green;
 }
 
 p {
-  margin: 10px 50px;
+  margin: 10px;
 }
 
 form {
   margin: 50px 50px;
 }
 
-img {
-  margin-left: 50px;
+section {
+  margin: auto;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+a {
+  padding: 10px;
 }
 /*# sourceMappingURL=index.css.map */
