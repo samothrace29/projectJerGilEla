@@ -18,6 +18,7 @@
 <body>
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
+    <?php include_once "function.php"; ?>
     
     <main>
         <h1>Categories</h1>
@@ -30,10 +31,19 @@
     <FORM class="formSelectCategories">
         <SELECT name="categorie_list" size="1">
             <OPTION>
-            <OPTION>science fiction
-            <OPTION>comedie
-            <OPTION>aventure
-            <OPTION>thriller
+
+            <!-- $query = "select * from categories";
+        //$result = queryDatabase($query);
+        return queryDatabase($query); -->
+
+            <?php $categories = queryDatabase("select * from categories"); //var_dump($categories); 
+            
+            for ( $i=0 ; $i< count ($categories); $i++ ) { ?>
+                <OPTION><?php echo $categories[$i]['category']; ?>
+                
+            <?php }
+            
+            ?>
         </SELECT>
 
     </FORM>
