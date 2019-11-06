@@ -27,7 +27,7 @@
 
 <div class="categories_div_header">
     <h4>Managing Categories</h4>
-    <FORM>
+    <FORM class="formSelectCategories">
         <SELECT name="categorie_list" size="1">
             <OPTION>
             <OPTION>science fiction
@@ -36,13 +36,18 @@
             <OPTION>thriller
         </SELECT>
 
-    <input type="text" id="categories">
     </FORM>
 
 
 
 </div>
+<div class="categories_div_header">
+<form action="" method="post">
+    <input type="text" id="categories">
+    <input type="submit" value="Add/update Categories">
 
+</form>
+</div>
 
     <!-- select all categories from database -->
     <!-- create the list with one blank -->
