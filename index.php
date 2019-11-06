@@ -12,6 +12,7 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style/loginregister.css">
+<link rel="stylesheet" href="style/index.css">
 <title>Document</title>
 </head>
 <body>
@@ -37,13 +38,52 @@
 
 <?php 
 
+require_once 'connect.php';
+$connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
+$db_found = mysqli_select_db($connect,'projectejg');
+
+if($db_found){
+
+    $query= "SELECT * FROM movies";
+
+    $result_query=mysqli_query($connect,$query);
+    var_dump($result_query);
+
+    while ($movies = mysqli_fetch_assoc($result_query)){
+
+            $title=$movies['title'];
+            $release=$movies['release_year'];
+            $synopsis=$movies['synopsis'];
+            $category=$movies['category'];
+            $poster=$movies['poster'];
+            
+            echo $category.'<br>';
+            
 
 
 
 
+    }
+$query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
 
+    $result_query=mysqli_query($connect,$query);
+    var_dump($result_query);
 
+    while ($movies = mysqli_fetch_assoc($result_query)){
+        $title=$movies['title'];
+        $release=$movies['release_year'];
+        $synopsis=$movies['synopsis'];
+        $category=$movies['category'];
+        $poster=$movies['poster'];
+ 
+        
+    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>";
+    echo "<p> Title: $title </p>"; 
+            
 
+}
+
+}
 
 
 
