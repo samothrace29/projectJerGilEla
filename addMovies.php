@@ -13,13 +13,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/loginregister.css">
     <link rel="stylesheet" href="style/categories.css">
-    <link rel="stylesheet" type="text/css" href="../style/add-edit-movies.css">
     <title>Add Movies</title>
     </head>
 <?php
 include 'function.php';
 include_once 'menu.php';
 
+if (isset($_POST['submit'])) {
+    
 if (!empty($_POST)) {
     $errors = array();
     $error = 0;
@@ -66,15 +67,15 @@ if (!empty($_POST)) {
     }
     
 }
+}
 
 require_once 'connect.php';
 $connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
 $db_found = mysqli_select_db($connect,'projectejg');
 
 if (isset($_POST['submit'])) {
-    var_dump($_FILES);
     
-    $destinationDir = '/database/movie_posters/';
+    $destinationDir = '/projectJerGilEla/database/movie_posters/';
     $destinationFilePath = $destinationDir . basename($_FILES['my_file']['name']);
 
     if ($_FILES['my_file']['error'] != UPLOAD_ERR_OK) {
@@ -139,7 +140,7 @@ if (isset($_POST['submit'])) {
             <br><br>
             <label>Movie Release Year:</label>
             <br>
-            <input type="number" name="release_year" maxlength = "04">
+            <input type="number" name="release_year" maxlength="04">
             <br><br>
             <label>Synopsis:</label>
             <br>
@@ -173,19 +174,6 @@ if (isset($_POST['submit'])) {
         </div>
         
    
-        <!--        
-        <h3>Upload Movie Poster:</h3>
-        <form enctype="multipart/form-data" action="" method="post">
-        <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
-        <br>
-        <label>Select a file:</label>
-        <br><br>
-        <input name="category" type="file" name="my_file">
-        <br><br>
-        <input type="submit" name="send-file" value="send the file">
-        </form>
-            -->
-
     </main>
 </body>
 <!-- JQuery -->
