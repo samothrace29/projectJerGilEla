@@ -24,7 +24,7 @@ if(!empty($title)){
         $poster=$userinfo['poster'];
         $movieid=$userinfo['movie_id'];
         
-        echo "<a href='movies.php?$movieid'>'$name.'</a>'",
+        echo "<a href='movie_detail.php?moid=$movieid'>'$name.'</a>'",
         "<img src='database/movie_posters/$poster' height='100px' width='50px'>".'<br>',
         "'<div class='hidden'>$movieid </div><br>'";
     }

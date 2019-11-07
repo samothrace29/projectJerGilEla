@@ -52,7 +52,7 @@
 ?>
     
     <li class="nav-item">
-      <a class="nav-link" href="movies.php">movies</a>
+      <a class="nav-link" href="movie_detail.php">Movie Detail</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="categories.php">categories</a>

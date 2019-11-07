@@ -41,13 +41,30 @@
 <?php 
 var_dump($_GET);
 
+
+$movieid=$_GET['moid'];
+
 require_once 'connect.php';
 $connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
 $db_found = mysqli_select_db($connect,'projectejg');
 
 if($db_found){
 
-echo 'db found';
+   
+    $query="SELECT * FROM movies WHERE movie_id=$movieid";
+    $result_query=mysqli_query($connect,$query);
+
+    $movie = mysqli_fetch_assoc($result_query);
+
+    $title=$movie['title'];
+    $release=$movie['release_year'];
+    $synopsis=$movie['synopsis'];
+    $category=$movie['category_id'];
+    $poster=$movie['poster'];
+    $movieid=$movie['movie_id'];
+
+
+    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
 
 }
 
