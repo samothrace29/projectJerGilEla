@@ -110,8 +110,10 @@ echo '</section>';
               url: 'search-movie.php',
               type:'post',
               data: $('form').serialize(),
-              success: function(result){    
+              success: function(result){  
+                  console.log(result);  
                   $('#resultForm').html('<div class="green">' + result + '<div>');
+                 
               },
               error: function(err){
                   $('#resultForm').html('<div class="red">' + result + '<div>');

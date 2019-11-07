@@ -32,6 +32,10 @@ a {
 }
 
 #search {
-  padding: 25px 50px;
+  padding: 10px 50px;
+}
+
+.hidden {
+  display: none;
 }
 /*# sourceMappingURL=index.css.map */
