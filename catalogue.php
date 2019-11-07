@@ -23,9 +23,8 @@
     <?php include_once "function.php"; 
     
     $category_filter = "*";
-    if ( isset( $_GET ['categ']) ) {
-        if ( $_GET)
-        $category_filter = isset( $_GET ['categ'])"
+    if ( isset( $_GET ['categ']) ) {       
+        $category_filter = isset( $_GET ['categ']);
     } else {
 
     }
@@ -39,8 +38,14 @@
         <!-- Creating a div to split  with flex space-around -->
         
         <div class="catalogue_sortElement">
+            <FORM class="formSelectCategories">
+                <SELECT id="categorie_list" name="categorie_list" size="1">
+                    <OPTION value="" class="categorie_option">
+                </SELECT>
 
-            </div>
+            </FORM>
+
+        </div>
             
 
             <article class="catalogue_showAllMovies">
@@ -52,17 +57,15 @@
                         <h3>number + title</h3>
                         <p>lorem</p>
                     </div>
-                <div class="catalogue_div_Button">
-                    <input type="button" value="Detail">
-                    <input type="button" value="Modify">
-                </div>
-            </section>
+                         <div class="catalogue_div_Button">
+                            <a href="" class="catalogue_a1">Detail</a>
+                            <a href="" class="catalogue_a2">Modify</a>             
+                    </div>
+                </section>
             
-        </article>
+            </article>
         
         <div class="catalogue_pagination">
-            <a href=""><span>1</span></a>
-            <a href=""><span>1</span></a>
             <a href=""><span>1</span></a>
         </div>
 
@@ -98,7 +101,40 @@
     <script src="./script/modal.js"></script>
     <script src="./script/catalogue.js"></script>
     
+    <script>
+   
+   setTimeout(function(){
+       $all = $("#categorie_list");
+       options=$(".categorie_option");
+
+       //console.log($all);
+       /*
+       console.log("before");
+       
+       console.log($all);
+       console.log("before");
+      
+         console.log($options);
+         console.log("after");
+*/
+    options.each( element => {
+        //console.log("before");
+        //console.log(element);
+        if (options[element].text == "<?php echo $_GET['categ'] ; ?>") {
+
+            console.log(options[element].value);
+            $("#categorie_list").val(options[element].value);
+            $("#categorie_list").trigger("change");
+        }
+        //console.log("after");
+    })
     
+
+
+
+}, 2000);
+
+    </script>
 </body>
 
 </html>
