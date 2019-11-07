@@ -104,8 +104,8 @@ alert("Wrong Password !!!!");
                     mysqli_close ($connect);
                     //die();  
                 } else {
-                    echo "show information !!! ";
-                    var_dump ($row);
+                   // echo "show information !!! ";
+                   // var_dump ($row);
                     $firstName = $row['firstname'];
                     $lastName  = $row['lastname'];
                 }
@@ -118,7 +118,7 @@ alert("Wrong Password !!!!");
             } else {
 
               //  echo "Welcome " . $email;
-                 var_dump ( $_POST );
+                 //var_dump ( $_POST );
                 if ( isset($_POST['reminderMe']) ) {
                     setcookie ('firstName', $firstName,  time() + 3600 );
                     setcookie ('lastName', $firstName,  time() + 3600 );

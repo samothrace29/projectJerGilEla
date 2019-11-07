@@ -39,8 +39,9 @@
         
         <div class="catalogue_sortElement">
             <FORM class="formSelectCategories">
+                <span>Filter</span>
                 <SELECT id="categorie_list" name="categorie_list" size="1">
-                    <OPTION value="" class="categorie_option">
+                    <OPTION value="" class="categorie_option"></OPTION>
                 </SELECT>
 
             </FORM>
