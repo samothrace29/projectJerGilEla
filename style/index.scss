@@ -1,0 +1,64 @@
+body{
+    background-color: rgba(221, 221, 221, 0.877);
+}
+main{
+    width: 1200px;
+    margin:auto;
+
+}
+h1{
+    margin:50px;
+    color:green;
+    
+}
+
+p{
+    margin: 10px  ;
+
+}
+form{
+    margin: 50px 50px 20px;
+}
+
+section{
+    margin: auto;
+    margin-top:20px;
+    display: flex;
+    justify-content: space-between;
+}
+a{
+    padding:10px;
+    
+}
+
+#search{
+    padding: 10px 50px;
+}
+.hidden{
+    display:none;
+}
+.movietitle{
+    padding:0;
+}
+.resulti{
+    display:flex;
+   justify-content: space-between;
+   flex-direction: column;
+   a{
+       padding:0;
+   }
+}
+.bottom{
+    margin-top:50px;
+}
+#search{
+    background-color: rgba(221, 221, 221, 0.877);
+}
+.noshow{
+    display:none;
+}
+h2{
+    color:red;
+    margin-top: 20px;
+    margin-left:50px;
+}

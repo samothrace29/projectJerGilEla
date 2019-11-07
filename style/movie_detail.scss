@@ -1,0 +1,37 @@
+body{
+    background-color: rgba(221, 221, 221, 0.877);
+    
+}
+main{
+    
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    margin-top: 100px;
+    font-size: 25px;
+}
+
+.pic{
+ 
+    p{
+        margin-top:25px;
+    }
+}
+
+.title{
+    margin-left:50px;
+    margin-right:200px;
+    p{
+        padding-bottom:25px;
+    }
+    .titcat{
+        display:flex;
+        justify-content: space-between;
+    }
+}
+h2{
+    color: RED;
+    display: flex;
+    justify-content: center;
+    margin-top:50px;
+}

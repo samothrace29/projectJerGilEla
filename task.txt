@@ -26,7 +26,7 @@ Programming:
 - add / modify category gilles DONE
 	* form (HTML)
 	* processing / validation / data management
-- playlist elaine / jerome / gilles NOT YET STARTED
+- 0 elaine / jerome / gilles NOT YET STARTED
 	* create a playlist
 	* edit/change playlist
 - template DONE
