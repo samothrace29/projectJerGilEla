@@ -96,10 +96,10 @@ function checkUser(&$user) {
             while ( $row = mysqli_fetch_assoc($result) ) {
                 $foundEmail = true;
                 if ( ! password_verify ( $pwd  , $row['password'] ))  { ?>
-                <script language="javascript">
-                    alert("Wrong Password !!!!");
-                    </script>
-                <?php
+<script language="javascript">
+alert("Wrong Password !!!!");
+</script>
+<?php
                     //echo "<javascript>alert('wrong password !!!')</javascript>";
                     mysqli_close ($connect);
                     //die();  
@@ -141,8 +141,10 @@ function checkUser(&$user) {
     }
     }
 
-    function queryDatabase($queryToRun){
-        $error = false;
+    // added parameter InspUdDel, if you insert update delete rows, it's not necessary to fetch the result, just checking the result
+    // by default, it's a select !!! to return in an array the result from your query
+    function queryDatabase($queryToRun, $InsUpdDel = false ){
+        $noerror = true;
         if ( !empty ($queryToRun) ) {
             
             include_once "connect.php";
@@ -153,7 +155,7 @@ function checkUser(&$user) {
                 if ( defined  ( 'DB_DEBUGGER' ) ) {
                     echo "Problem with server ... " ;
                 }
-                
+                return false;
             } else {
                 $result = mysqli_query ($connect,$queryToRun) ;
                 $resultToReturn = array();
@@ -163,11 +165,13 @@ function checkUser(&$user) {
                     if (defined  ( 'DB_DEBUGGER' )) {
                         echo "SQL Error ... " . mysqli_error($connect);
                     }
-                    
-                    $error = true;
+                    return false;
+                //    $error = true;
             
                 } else {   
-                    
+                    if ( $InsUpdDel ) {
+                        return true;
+                    }
                     while ( $row = mysqli_fetch_assoc($result) ) {
                         $resultToReturn[]=$row;
                     }
@@ -176,9 +180,8 @@ function checkUser(&$user) {
                 }
                 
                 mysqli_close ($connect);
-                if ( !$error ) {
-                    return $resultToReturn;
-                }
+                
+                return $resultToReturn;
                 
             }   
         } else {
