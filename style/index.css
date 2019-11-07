@@ -67,4 +67,18 @@ a {
 .bottom {
   margin-top: 50px;
 }
+
+#search {
+  background-color: rgba(221, 221, 221, 0.877);
+}
+
+.noshow {
+  display: none;
+}
+
+h2 {
+  color: red;
+  margin-top: 20px;
+  margin-left: 50px;
+}
 /*# sourceMappingURL=index.css.map */

@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php session_start();?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,12 +14,20 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.9/css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style/loginregister.css">
 <link rel="stylesheet" href="style/index.css">
-<title>Document</title>
+<title>Home</title>
 </head>
 <body>
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
-<main>    
+<?php if (!isset($_SESSION['email'])){
+    echo "<h2> Please login or register</h2>";
+    $hide="noshow";
+}else{
+    $hide="show";
+}
+ ?>
+
+    <main class="<?php echo $hide?>">    
 <h1> Welcome to the Project Page of Elaine, Gilles and Jérôme</h1>
 
 <p>Go Speed Racer. Go Speed Racer. Go Speed Racer go! Well we're movin' on up to the east side. To a deluxe apartment in the sky. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name. And they're always glad you came. Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm walking on air. I never thought I could feel so free! Boy the way Glen Miller played. Songs that made the hit parade. Guys like us we had it made. Those were the days! Here's the story of a man named Brady who was busy with three boys of his own.</p>
@@ -37,6 +46,7 @@
 <div id="resultForm">...</div>
 
 <?php 
+if (isset($_SESSION['email'])) {
 
 require_once 'connect.php';
 $connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
@@ -85,7 +95,7 @@ if($db_found){
     echo '</section>';
 }
 
-
+}
 
 ?>    
 
