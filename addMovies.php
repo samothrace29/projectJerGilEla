@@ -18,14 +18,17 @@
 <?php
 include 'function.php';
 include_once 'menu.php';
+define('SITE_ROOT', realpath(dirname(__FILE__)));
 
 if (isset($_POST['submit'])) {
+
+    echo "hello";
     
-if (!empty($_POST)) {
-    $errors = array();
-    $error = 0;
-	// Basics validations
-	if (empty($_POST['title'])) {
+    if (!empty($_POST)) {
+        $errors = array();
+        $error = 0;
+        // Basics validations
+        if (empty($_POST['title'])) {
         $errors[] = 'Title is mandatory';
         $error++;
 	}
@@ -42,17 +45,23 @@ if (!empty($_POST)) {
         $error++;
     }
     
+    echo "hello";
 	if (count($errors) === 0) {
-
-        $query = "INSERT INTO movies(title, release_year, synopsis, category_id) VALUES('" . $_POST['title'] . "', '" . $_POST['release_year'] . "', '" . $_POST['synopsis'] . "')";
+        
+        $query = "INSERT INTO movies(title, release_year, synopsis, category_id) 
+        VALUES('" . $_POST['title'] . "', 
+        '" . $_POST['release_year'] . "', 
+        '" . $_POST['synopsis'] . "' , 
+        (select category_id FROM categories WHERE category = '" . 'drama' . "'))";
         // Send an SQL request to our DB
         $categories = queryDatabase("SELECT * FROM categories c INNER JOIN movies m ON m.category_id = c.category_id");
 
-        if(!$categories){
-        
-        $query2 = "INSERT INTO categories(category) VALUES('" . $_POST['category_list'] . "')";
-        $result_query = queryDatabase($query, true); 
-        //var_dump($categories); 
+        echo "lhlkhklhjlk";
+        if($categories){
+            
+       
+            $result_query = queryDatabase($query, true); 
+            //var_dump($categories); 
             
 		if ($result_query) {
 			echo 'Movie successfully addded!';
@@ -75,9 +84,6 @@ $db_found = mysqli_select_db($connect,'projectejg');
 
 if (isset($_POST['submit'])) {
     
-    $destinationDir = '/projectJerGilEla/database/movie_posters/';
-    $destinationFilePath = $destinationDir . basename($_FILES['my_file']['name']);
-
     if ($_FILES['my_file']['error'] != UPLOAD_ERR_OK) {
         echo 'Upload Error';
     } else {
@@ -93,6 +99,8 @@ if (isset($_POST['submit'])) {
                 'gif' => 'image/gif'
             )
         );
+        $fullPath = '';
+
         if ($extFoundInArray === false) {
             echo 'That is not a picture';
         } else {
@@ -101,16 +109,15 @@ if (isset($_POST['submit'])) {
             $fileName = '';
             do {
                 $fileName = $shaFile . $nbFiles . '.' . $extFoundInArray;
-                $fullPath = '/database/movie_posters/' . $fileName;
+                $fullPath = SITE_ROOT. '/database/movie_posters/' . $fileName;
                 $nbFiles++;
             } while (file_exists($fullPath));
             $moved = move_uploaded_file($_FILES['my_file']['tmp_name'], $fullPath);
-
             if (!$moved) {
                 echo 'Error error';
             } else
                 echo "File successfully saved <br>";
-            $user = $_SESSION['user'];
+            
 
             require_once 'connect.php';
             //connect to the database
@@ -119,7 +126,7 @@ if (isset($_POST['submit'])) {
             $db_found = mysqli_select_db($connect, 'projectejg');
             $result_query = mysqli_query($connect, $query);
             if ($result_query)
-                echo '<img src="uploads' . $fileName . '">';
+                echo '<img src="' . './database/movie_posters/' . $fileName . '">';
             else
                 echo 'DID NOT WORK';
         }
@@ -128,19 +135,20 @@ if (isset($_POST['submit'])) {
 
 ?>
 <body>
+
     <main>
         <div id="addMovie">
+
             <h2>Add a new movie to the database</h2>
 
-	        <form enctype="multipart/form-data" action="#" method="POST">
-
+	        <form action="#" enctype="multipart/form-data" method="POST">
             <label>Movie Title:</label>
             <br>
             <input type="text" name="title">
             <br><br>
             <label>Movie Release Year:</label>
             <br>
-            <input type="number" name="release_year" maxlength="04">
+            <input type="number" name="release_year" maxlength="4">
             <br><br>
             <label>Synopsis:</label>
             <br>
@@ -150,27 +158,26 @@ if (isset($_POST['submit'])) {
             <br>
             <select name="category_list">
             <option>
-
-            <?php 
-            $categories = queryDatabase("SELECT * FROM categories"); 
-            //var_dump($categories); 
-            for ($i=0 ; $i<count($categories); $i++) { ?>
-            <option><?php echo $categories[$i]['category']; ?>
-            <?php } ?>
-
+                <?php 
+                $categories = queryDatabase("SELECT * FROM categories"); 
+                //var_dump($categories); 
+                for ($i=0 ; $i<count($categories); $i++) { ?>
+                <option><?php echo $categories[$i]['category']; ?>
+                <?php } 
+                ?>
             </select>
             <br><br>
             
-            <h3>Upload Movie Poster:</h3>
+            <h3>Upload New Movie Poster:</h3>
             
             <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
             <br>
             <label>Select a file:</label>
             <br><br>
-            <input  type="file" name="my_file">
+            <input type="file" name="my_file">
             <br><br>
             <input type="submit" name="submit" value="Submit New Movie">
-            </form>
+	        </form>
         </div>
         
    
