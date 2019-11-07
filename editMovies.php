@@ -128,6 +128,27 @@ if (isset($_SESSION['user'])) {
     <script>
     // If you change the list value, you change too the button and the input with the old previous update
     $('#movies').change(function (e) {
+
+        $.ajax({
+    url: 'http://localhost:3000/server/catalogue_getAllMovies.php',
+    type: 'post',
+    data: { category: "drama" },
+    success: function (result) {
+        console.log(result);
+        // returnCode = JSON.parse(result);
+        console.log(returnCode);
+        
+
+
+    },
+    error: function (err) {
+        console.log("mqdjfmqdlfjqmdlf");
+        
+        
+    }
+});
+    
+
     $selectVal = $(this).val();
 
     // which children is selected
@@ -150,7 +171,7 @@ if (isset($_SESSION['user'])) {
     }
     }
     });
-    
+
     </script>
     
     </html>
