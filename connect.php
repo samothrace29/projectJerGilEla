@@ -6,7 +6,7 @@ if ( !defined  ( 'DB_SERVER' )) {
     define ('DB_USER','root');
     define ('DB_PASSWORD','');
     define ('DB_NAME','projectejg');
-    define ('DB_DEBUGGER',false);
+    define ('DB_DEBUGGER',true);
 }
     
 ?>

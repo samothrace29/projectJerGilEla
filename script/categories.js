@@ -17,7 +17,7 @@ $("#submit_categories").click(function (e) {
     if (dataOriginal != dataToUpdate) {
 
         $.ajax({
-            url: 'http://localhost:3000/server/categories_InsertUpdate.php',
+            url: './server/categories_InsertUpdate.php',
             type: 'post',
             data: { categories_type: dataType, id: dataId, categorie_name: dataOriginal, categorie_UpdateValue: dataToUpdate },
             success: function (result) {
@@ -50,7 +50,7 @@ $("#submit_categories").click(function (e) {
 function reloadSelectOption() {
 
     $.ajax({
-        url: 'http://localhost:3000/server/categories_getList.php',
+        url: './server/categories_getList.php',
         type: 'post',
         data: { request_list: true },
         success: function (result) {

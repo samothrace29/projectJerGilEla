@@ -5,7 +5,7 @@ reloadSelectOption();
 
 function reloadSelectOption() {
 $.ajax({
-    url: 'http://localhost:3000/server/categories_getList.php',
+    url: './server/categories_getList.php',
     type: 'post',
     data: { request_list: true },
     success: function (result) {
@@ -41,7 +41,7 @@ $.ajax({
     },
     error: function (err) {
         console.log("failed  !!!");
-        $('#categorie_list').html(print_r(err));
+        $('#categorie_list').html((err));
 
         // If ajax errors happens
     }
@@ -57,7 +57,7 @@ $('#categorie_list').change(function (e) {
 
     $varToSend = $(this).find('option:selected').text() ;
     $.ajax({
-        url: 'http://localhost:3000/server/categories_getList.php',
+        url: './server/categories_getList.php',
         type: 'post',
         data: { request_list: true },
         success: function (result) {
@@ -66,7 +66,7 @@ $('#categorie_list').change(function (e) {
             console.log( "Success !!!" );
 
             $.ajax({
-                url: 'http://localhost:3000/server/catalogue_getAllMovies.php',
+                url: './server/catalogue_getAllMovies.php',
                 type: 'post',
                 data: { category: $varToSend },
                 success: function (result) {
