@@ -52,7 +52,10 @@
 ?>
     
     <li class="nav-item">
-      <a class="nav-link" href="movies.php">movies</a>
+      <a class="nav-link" href="movie_detail.php">movie detail</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="catalogue.php">catalogue</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="categories.php">categories</a>
