@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
             require_once 'connect.php';
             //connect to the database
             $connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
-            $query = "UPDATE movies SET poster = '" . $fileName . "'";
+            $query = "UPDATE movies SET poster = '" . $fileName . "'"  . " WHERE title='" . $_POST['title'] . "'";
             $db_found = mysqli_select_db($connect, 'projectejg');
             $result_query = mysqli_query($connect, $query);
             if ($result_query)
