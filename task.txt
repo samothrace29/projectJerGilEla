@@ -9,29 +9,29 @@ Organization:
 
 Programming:
 ---------------
-- Home jerome trying
+- Home jerome trying DONE
 	* research
 	* categories
 	* latest films
-- catalog gilles
+- catalog gilles WORKING
 	* pagination
 	* results (mini-movie sheets)
 	* sort(s)
 	* add to playlist
-- movie detail page jerome trying
+- movie detail page jerome trying WORKING
 	* show the data
-- add / edit movie elaine
+- add / edit movie elaine WORKING
 	* form (HTML)
 	* processing / validation / data management
-- add / modify category gilles
+- add / modify category gilles DONE
 	* form (HTML)
 	* processing / validation / data management
-- playlist elaine / jerome / gilles
+- playlist elaine / jerome / gilles NOT YET STARTED
 	* create a playlist
 	* edit/change playlist
-- template done done
+- template DONE
 	* menu (header)
 	* footer
 - generic functions everyone
-	* connection to the DB
-	* SQL queries
+	* connection to the DB DONE
+	* SQL queries DONE

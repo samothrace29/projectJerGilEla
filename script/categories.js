@@ -55,6 +55,7 @@ function reloadSelectOption() {
         data: { request_list: true },
         success: function (result) {
             console.log("success !!!");
+            //console.log(result);
             r2 = JSON.parse(result);
             console.log(result);
             console.log(r2);
