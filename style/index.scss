@@ -1,6 +1,10 @@
+body{
+    background-color: rgba(221, 221, 221, 0.877);
+}
 main{
     width: 1200px;
     margin:auto;
+
 }
 h1{
     margin:50px;
@@ -12,7 +16,7 @@ p{
 
 }
 form{
-    margin: 50px 50px;
+    margin: 50px 50px 20px;
 }
 
 section{
@@ -23,6 +27,7 @@ section{
 }
 a{
     padding:10px;
+    
 }
 
 #search{
@@ -33,4 +38,15 @@ a{
 }
 .movietitle{
     padding:0;
+}
+.resulti{
+    display:flex;
+   justify-content: space-between;
+   flex-direction: column;
+   a{
+       padding:0;
+   }
+}
+.bottom{
+    margin-top:50px;
 }

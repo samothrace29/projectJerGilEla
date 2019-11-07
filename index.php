@@ -67,7 +67,7 @@ $query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
 
     $result_query=mysqli_query($connect,$query);
     
-echo '<section>';
+echo "<section class='bottom'>";
     while ($movies = mysqli_fetch_assoc($result_query)){
         $title=$movies['title'];
         $release=$movies['release_year'];
@@ -114,11 +114,11 @@ echo '</section>';
               data: $('form').serialize(),
               success: function(result){  
                   console.log(result);  
-                  $('#resultForm').html('<div class="green">' + result + '<div>');
+                  $('#resultForm').html('<div class="resulti">' + result + '<div>');
                  
               },
               error: function(err){
-                  $('#resultForm').html('<div class="red">' + result + '<div>');
+                  $('#resultForm').html('<div >' + result + '<div>');
               }
           });
       

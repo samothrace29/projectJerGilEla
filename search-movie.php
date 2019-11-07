@@ -12,7 +12,7 @@ if(!empty($title)){
     $query= "SELECT * FROM movies where title like '%$title%'";
 
 
-    var_dump($query);
+    
     $result_query=mysqli_query($connect,$query);
     //echo mysqli_error($connect);
   
@@ -23,9 +23,9 @@ if(!empty($title)){
         $poster=$userinfo['poster'];
         $movieid=$userinfo['movie_id'];
         
-        echo "<a href='movie_detail.php?moid=$movieid'>$name</a>'",
+        echo "<a href='movie_detail.php?moid=$movieid'>$name</a>",
         "<img src='database/movie_posters/$poster' height='200px' width='150px'>".'<br>',
-        "'<div class='hidden'>$movieid </div><br>'";
+        "<div class='hidden'>$movieid </div><br>";
     }
 
 

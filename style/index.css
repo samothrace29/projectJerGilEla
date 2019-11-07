@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(221, 221, 221, 0.877);
+}
+
 main {
   width: 1200px;
   margin: auto;
@@ -13,7 +17,7 @@ p {
 }
 
 form {
-  margin: 50px 50px;
+  margin: 50px 50px 20px;
 }
 
 section {
@@ -41,5 +45,26 @@ a {
 
 .movietitle {
   padding: 0;
+}
+
+.resulti {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.resulti a {
+  padding: 0;
+}
+
+.bottom {
+  margin-top: 50px;
 }
 /*# sourceMappingURL=index.css.map */

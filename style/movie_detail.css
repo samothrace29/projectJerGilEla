@@ -1,3 +1,7 @@
+body {
+  background-color: rgba(221, 221, 221, 0.877);
+}
+
 main {
   width: 1200px;
   margin: auto;
@@ -5,6 +9,7 @@ main {
   display: -ms-flexbox;
   display: flex;
   margin-top: 100px;
+  font-size: 25px;
 }
 
 .pic p {
@@ -16,6 +21,10 @@ main {
   margin-right: 200px;
 }
 
+.title p {
+  padding-bottom: 25px;
+}
+
 .title .titcat {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -23,5 +32,16 @@ main {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+h2 {
+  color: RED;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 50px;
 }
 /*# sourceMappingURL=movie_detail.css.map */

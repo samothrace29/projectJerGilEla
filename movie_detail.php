@@ -43,7 +43,7 @@
 <?php 
 
 
-
+if(!empty($_GET)){
 $movieid=$_GET['moid'];
 
 require_once 'connect.php';
@@ -86,8 +86,10 @@ if($db_found){
     echo "</section>";
     echo "</main>";
 
+}
 
-
+}else{
+    echo "<h2>No movie selected, please seclect one!!!!! </h2>";
 }
 
 
