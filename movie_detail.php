@@ -51,7 +51,7 @@ $movieid=$_GET['moid'];
     $db_found = mysqli_select_db($connect,'projectejg');
 
     if($db_found){
-
+       
     
         $query="SELECT m.*,c.category FROM movies m join categories c on m.category_id = c.category_id WHERE movie_id=$movieid";
     

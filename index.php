@@ -19,7 +19,7 @@
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
 <main>    
-<h1> Welcome to the Project Page of Elaine, Gilles Victor André and Jérôme</h1>
+<h1> Welcome to the Project Page of Elaine, Gilles and Jérôme</h1>
 
 <p>Go Speed Racer. Go Speed Racer. Go Speed Racer go! Well we're movin' on up to the east side. To a deluxe apartment in the sky. Wouldn't you like to get away? Sometimes you want to go where everybody knows your name. And they're always glad you came. Here he comes Here comes Speed Racer. He's a demon on wheels. Believe it or not I'm walking on air. I never thought I could feel so free! Boy the way Glen Miller played. Songs that made the hit parade. Guys like us we had it made. Those were the days! Here's the story of a man named Brady who was busy with three boys of his own.</p>
 
@@ -77,7 +77,7 @@ if($db_found){
             $movieid=$movies['movie_id'];
 
         echo '<div>';    
-        echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
+        echo "<img src='database/movie_posters/$poster' height='300px' width='250px'>.<br>";
         echo "<a class='movietitle' href=movie_detail?moid=$movieid> $title </a>"; 
         echo '</div>' ;       
 
