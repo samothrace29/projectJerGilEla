@@ -13,7 +13,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style/loginregister.css">
     <link rel="stylesheet" href="style/categories.css">
-    <link rel="stylesheet" type="text/css" href="../style/add-edit-movies.css">
+  
     <title>Edit Movies</title>
     </head>
     <?php
@@ -46,6 +46,24 @@ if (isset($_SESSION['user'])) {
     };
  }
 
+    $title = '';
+    $synopsis = '';
+    $poster = '';
+    $release_year = '';
+    $local_path = '';
+    $category = '';
+
+    if(isset($_GET['id'])){
+        $query = "SELECT * FROM `movies` WHERE movie_id =".$_GET['id'];
+        $result_query = mysqli_query($connect, $query);
+        $res = mysqli_fetch_assoc($result_query);
+        $title = $res['title'];
+        $synopsis = $res['synopsis'];
+        $poster = $res['poster'];
+        $release_year = $res['release_year'];
+        $local_path = $res['local_path'];
+        $category = $res['category_id'];
+    }
  
 ?>
 
@@ -72,15 +90,15 @@ if (isset($_SESSION['user'])) {
 
             <label>New Movie Title:</label>
             <br>
-            <input type="text" name="title" id="title">
+            <input type="text" name="title" id="title" value="<?php echo $title ?>">
             <br><br>
             <label>New Movie Release Year:</label>
             <br>
-            <input type="number" name="release_year" maxlength = "4" id="release_year">
+            <input type="number" name="release_year" maxlength = "4" id="release_year" value="<?php echo $release_year ?>">
             <br><br>
             <label>New Synopsis:</label>
             <br>
-            <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..." id="synopsis"></textarea>
+            <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..." id="synopsis"><?php echo $synopsis ?></textarea>
             <br><br>
             <label>New Category:</label>
             <br>
@@ -104,7 +122,7 @@ if (isset($_SESSION['user'])) {
             <br>
             <label>Select a file:</label>
             <br><br>
-            <input name="category" type="file" name="my_file">
+            <input type="file" name="my_file">
             <br><br>
             <input type="submit" name="submit" value="Update Movie">
         
@@ -126,18 +144,38 @@ if (isset($_SESSION['user'])) {
     <script src="./script/modal.js"></script>
     
     <script>
+    /*
     // If you change the list value, you change too the button and the input with the old previous update
     $('#movies').change(function (e) {
+
+    $.ajax({
+    url: 'http://localhost:3000/server/catalogue_getAllMovies.php',
+    type: 'post',
+    data: { category: "drama" },
+    success: function (result) {
+        console.log(result);
+        // returnCode = JSON.parse(result);
+        console.log(returnCode);
+        
+
+
+    },
+    error: function (err) {
+        console.log("mqdjfmqdlfjqmdlf");
+        
+        
+    }
+    });
+    */
     $selectVal = $(this).val();
 
     // which children is selected
     // $indexChildrenSelected = $(this).selectedIndex;
-    
     // get the text from the children selected
     $selectText = $(this).find('option:selected').text();
     $res = "SELECT release_year FROM movies m WHERE m.title = '$selectText'";
     $res = queryDatabase($selectYear);
-    console.log($res);
+    
     if($res){
     if ($selectVal) {
         $('#title').val($selectText);
@@ -149,8 +187,8 @@ if (isset($_SESSION['user'])) {
         $("#synopsis").val("");
     }
     }
-    });
-    
+    //});
+
     </script>
     
     </html>
