@@ -74,7 +74,7 @@ $db_found = mysqli_select_db($connect,'projectejg');
 if (isset($_POST['submit'])) {
     var_dump($_FILES);
     
-    $destinationDir = '/database/movie_posters';
+    $destinationDir = '/database/movie_posters/';
     $destinationFilePath = $destinationDir . basename($_FILES['my_file']['name']);
 
     if ($_FILES['my_file']['error'] != UPLOAD_ERR_OK) {
@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
             $fileName = '';
             do {
                 $fileName = $shaFile . $nbFiles . '.' . $extFoundInArray;
-                $fullPath = '/database/movie_posters' . $fileName;
+                $fullPath = '/database/movie_posters/' . $fileName;
                 $nbFiles++;
             } while (file_exists($fullPath));
             $moved = move_uploaded_file($_FILES['my_file']['tmp_name'], $fullPath);

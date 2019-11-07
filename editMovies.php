@@ -1,4 +1,4 @@
-?php session_start(); ?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,35 +16,78 @@
     <link rel="stylesheet" type="text/css" href="../style/add-edit-movies.css">
     <title>Edit Movies</title>
     </head>
-
-    <main>
     <?php
 
     include 'function.php';
     include_once 'menu.php';
 
-    ?>
+if (isset($_SESSION['user'])) {
+    if (isset($_POST['submit'])) {
+        $new_title = $_POST['title'];
+        $new_synopsis = $_POST['synopsis'];
+        $new_release_year = $_POST['release_year'];
+        $user = $_SESSION['user'];
+        
+        //connect to the database
+        require_once 'connect.php';
+        $connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
+        $db_found = mysqli_select_db($connect,'projectejg');
 
-<div id="editMovie">
+        $query = "UPDATE movies SET title = '" . $new_title . "', synopsis = '" . $new_synopsis . "' , release_year = '" . $new_release_year . "'";
+        
+        echo $query;
+    
+        $result_query = mysqli_query($connect, $query);
+        $userinfo = mysqli_fetch_assoc($result_query);
+        if ($result_query)
+            echo 'Movie updated in database';
+        else
+            echo 'Movie DID NOT update in database';
+    };
+ }
+
+ 
+?>
+
+<body>
+    <main>
+
+        <div id="editMovie">
             <h2>Edit a movie in the database</h2>
+
+            <label>Choose the movie to edit</label>
+            
+            <select name="movies">
+            <option>
+
+            <?php 
+            $movies = queryDatabase("SELECT * FROM movies"); 
+            //var_dump($categories); 
+            for ($i=0 ; $i<count($movies); $i++) { ?>
+            <option><?php echo $movies[$i]['title']; ?>
+            <?php } ?>
+            </option>
+
+            </select>
 
 	        <form enctype="multipart/form-data" action="#" method="POST">
 
-            <label>Movie Title:</label>
+            <label>New Movie Title:</label>
             <br>
-            <input type="text" name="title">
+            <input type="text" name="title" value="">
             <br><br>
-            <label>Movie Release Year:</label>
+            <label>New Movie Release Year:</label>
             <br>
             <input type="number" name="release_year" maxlength = "4">
             <br><br>
-            <label>Synopsis:</label>
+            <label>New Synopsis:</label>
             <br>
             <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..."></textarea>
             <br><br>
-            <label>Category:</label>
+            <label>New Category:</label>
             <br>
             <select name="category_list">
+
             <option>
 
             <?php 
@@ -54,10 +97,12 @@
             <option><?php echo $categories[$i]['category']; ?>
             <?php } ?>
 
+            </option>
+
             </select>
             <br><br>
             
-            <h3>Upload Movie Poster:</h3>
+            <h3>Upload New Movie Poster:</h3>
             
             <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
             <br>
@@ -65,7 +110,7 @@
             <br><br>
             <input name="category" type="file" name="my_file">
             <br><br>
-            <input type="submit" name="submit" value="Submit New Movie">
+            <input type="submit" name="submit" value="Update Movie">
         
 	        </form>
         </div>
