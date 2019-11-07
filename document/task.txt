@@ -13,25 +13,25 @@ Programming:
 	* research
 	* categories
 	* latest films
-- catalog gilles
+- catalog
 	* pagination
 	* results (mini-movie sheets)
 	* sort(s)
 	* add to playlist
-- movie detail page jerome trying
+- movie jerome trying
 	* show the data
-- add / edit movie elaine
+- add / edit movie
 	* form (HTML)
 	* processing / validation / data management
-- add / modify category gilles
+- add / modify category
 	* form (HTML)
 	* processing / validation / data management
-- playlist elaine / jerome / gilles
+- playlist
 	* create a playlist
 	* edit/change playlist
-- template done done
+- template done
 	* menu (header)
 	* footer
-- generic functions everyone
+- generic functions
 	* connection to the DB
 	* SQL queries

@@ -96,10 +96,10 @@ function checkUser(&$user) {
             while ( $row = mysqli_fetch_assoc($result) ) {
                 $foundEmail = true;
                 if ( ! password_verify ( $pwd  , $row['password'] ))  { ?>
-                <script language="javascript">
-                    alert("Wrong Password !!!!");
-                    </script>
-                <?php
+<script language="javascript">
+alert("Wrong Password !!!!");
+</script>
+<?php
                     //echo "<javascript>alert('wrong password !!!')</javascript>";
                     mysqli_close ($connect);
                     //die();  
@@ -140,4 +140,64 @@ function checkUser(&$user) {
         
     }
     }
+
+    // added parameter InspUdDel, if you insert update delete rows, it's not necessary to fetch the result, just checking the result
+    // by default, it's a select !!! to return in an array the result from your query
+    function queryDatabase($queryToRun, $InsUpdDel = false ){
+        $noerror = true;
+        if ( !empty ($queryToRun) ) {
+            
+            include_once "connect.php";
+
+            $connect = mysqli_connect (DB_SERVER,DB_USER,DB_PASSWORD,DB_NAME);
+
+            if (!$connect) {
+                if ( defined  ( 'DB_DEBUGGER' ) ) {
+                    echo "Problem with server ... " ;
+                }
+                return false;
+            } else {
+                $result = mysqli_query ($connect,$queryToRun) ;
+                $resultToReturn = array();
+
+                if (!$result) {
+
+                    if (defined  ( 'DB_DEBUGGER' )) {
+                        echo "SQL Error ... " . mysqli_error($connect);
+                    }
+                    return false;
+                //    $error = true;
+            
+                } else {   
+                    if ( $InsUpdDel ) {
+                        return true;
+                    }
+                    while ( $row = mysqli_fetch_assoc($result) ) {
+                        $resultToReturn[]=$row;
+                    }
+                    
+                    
+                }
+                
+                mysqli_close ($connect);
+                
+                return $resultToReturn;
+                
+            }   
+        } else {
+            
+            if ( defined  ( 'DB_DEBUGGER' ) ) {
+                echo " \$queryToRun is empty " . mysqli_error($connect);
+            }
+            return false;
+        }
+    };
+
+    function ftcGetCategoryList() {
+
+        $query = "select * from categories";
+        //$result = queryDatabase($query);
+        return queryDatabase($query);
+    }
+
 ?>
