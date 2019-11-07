@@ -57,49 +57,45 @@ if (isset($_SESSION['user'])) {
 
             <label>Choose the movie to edit</label>
             
-            <select name="movies">
+            <select id="movies" name="movies">
             <option>
-
             <?php 
             $movies = queryDatabase("SELECT * FROM movies"); 
             //var_dump($categories); 
-            for ($i=0 ; $i<count($movies); $i++) { ?>
-            <option><?php echo $movies[$i]['title']; ?>
+                for ($i=0 ; $i<count($movies); $i++) { ?>
+                <option><?php echo $movies[$i]['title']; ?>
             <?php } ?>
-            </option>
-
+                </option>
             </select>
 
 	        <form enctype="multipart/form-data" action="#" method="POST">
 
             <label>New Movie Title:</label>
             <br>
-            <input type="text" name="title" value="">
+            <input type="text" name="title" id="title">
             <br><br>
             <label>New Movie Release Year:</label>
             <br>
-            <input type="number" name="release_year" maxlength = "4">
+            <input type="number" name="release_year" maxlength = "4" id="release_year">
             <br><br>
             <label>New Synopsis:</label>
             <br>
-            <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..."></textarea>
+            <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..." id="synopsis"></textarea>
             <br><br>
             <label>New Category:</label>
             <br>
+
             <select name="category_list">
-
             <option>
-
             <?php 
             $categories = queryDatabase("SELECT * FROM categories"); 
             //var_dump($categories); 
             for ($i=0 ; $i<count($categories); $i++) { ?>
             <option><?php echo $categories[$i]['category']; ?>
             <?php } ?>
-
             </option>
-
             </select>
+
             <br><br>
             
             <h3>Upload New Movie Poster:</h3>
@@ -129,5 +125,32 @@ if (isset($_SESSION['user'])) {
     <script src="./script/loginregister.js"></script>
     <script src="./script/modal.js"></script>
     
+    <script>
+    // If you change the list value, you change too the button and the input with the old previous update
+    $('#movies').change(function (e) {
+    $selectVal = $(this).val();
+
+    // which children is selected
+    // $indexChildrenSelected = $(this).selectedIndex;
+    
+    // get the text from the children selected
+    $selectText = $(this).find('option:selected').text();
+    $res = "SELECT release_year FROM movies m WHERE m.title = '$selectText'";
+    $res = queryDatabase($selectYear);
+    console.log($res);
+    if($res){
+    if ($selectVal) {
+        $('#title').val($selectText);
+        $("#release_year").val($res["release_year"]);
+        $('#synopsis').val("");
+    } else {
+        $("#title").val("");
+        $("#release_year").val("");
+        $("#synopsis").val("");
+    }
+    }
+    });
+    
+    </script>
     
     </html>
