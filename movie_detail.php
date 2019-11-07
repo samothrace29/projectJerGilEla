@@ -46,47 +46,47 @@
 if(!empty($_GET)){
 $movieid=$_GET['moid'];
 
-require_once 'connect.php';
-$connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
-$db_found = mysqli_select_db($connect,'projectejg');
+    require_once 'connect.php';
+    $connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
+    $db_found = mysqli_select_db($connect,'projectejg');
 
-if($db_found){
+    if($db_found){
 
-   
-    $query="SELECT m.*,c.category FROM movies m join categories c on m.category_id = c.category_id WHERE movie_id=$movieid";
-   
-   
     
-    $result_query=mysqli_query($connect,$query);
+        $query="SELECT m.*,c.category FROM movies m join categories c on m.category_id = c.category_id WHERE movie_id=$movieid";
     
     
-    
-    $movie = mysqli_fetch_assoc($result_query);
+        
+        $result_query=mysqli_query($connect,$query);
+        
+        
+        
+        $movie = mysqli_fetch_assoc($result_query);
 
-    $title=$movie['title'];
-    $release=$movie['release_year'];
-    $synopsis=$movie['synopsis'];
-    $category=$movie['category'];
-    $poster=$movie['poster'];
-    $movieid=$movie['movie_id'];
-    $location=$movie['file_location'];
+        $title=$movie['title'];
+        $release=$movie['release_year'];
+        $synopsis=$movie['synopsis'];
+        $category=$movie['category'];
+        $poster=$movie['poster'];
+        $movieid=$movie['movie_id'];
+        $location=$movie['file_location'];
 
-    echo "<main>";
-    echo "<section class='pic'>",
-    "<img src='database/movie_posters/$poster' height='400px' width='300px'>.<br>",
-    "<p><strong>Release Date:</strong>  $release</p>";
-    echo "</section>";
-    echo "<section class='title'>",
-    "<div class='titcat'>",
-    "<p><strong>Movie title:</strong> $title </p>",
-    "<p><strong>Category:</strong> $category </p>".'<br>',
-    "</div>",
-    "<p><strong>Description:</strong> $synopsis</p>".'<br>',
-    "<p><strong>File path: $location</p>";
-    echo "</section>";
-    echo "</main>";
+        echo "<main>";
+        echo "<section class='pic'>",
+        "<img src='database/movie_posters/$poster' height='400px' width='300px'>.<br>",
+        "<p><strong>Release Date:</strong>  $release</p>";
+        echo "</section>";
+        echo "<section class='title'>",
+        "<div class='titcat'>",
+        "<p><strong>Movie title:</strong> $title </p>",
+        "<p><strong>Category:</strong> $category </p>".'<br>',
+        "</div>",
+        "<p><strong>Description:</strong> $synopsis</p>".'<br>',
+        "<p><strong>File path:</strong> $location</p>";
+        echo "</section>";
+        echo "</main>";
 
-}
+    }
 
 }else{
     echo "<h2>No movie selected, please seclect one!!!!! </h2>";

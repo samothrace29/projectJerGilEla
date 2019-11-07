@@ -48,7 +48,7 @@ if($db_found){
 
     $result_query=mysqli_query($connect,$query);
     
-echo '<section>';
+    echo '<section>';
     while ($movies = mysqli_fetch_assoc($result_query)){
         
         $category=$movies['category'];
@@ -62,27 +62,27 @@ echo '<section>';
 
 
     }
-echo '</section>';    
-$query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
+    echo '</section>';    
+    $query= "SELECT * FROM movies ORDER BY movie_id DESC LIMIT 4" ;
 
-    $result_query=mysqli_query($connect,$query);
-    
-echo "<section class='bottom'>";
-    while ($movies = mysqli_fetch_assoc($result_query)){
-        $title=$movies['title'];
-        $release=$movies['release_year'];
-        $synopsis=$movies['synopsis'];
-        $category=$movies['category_id'];
-        $poster=$movies['poster'];
-        $movieid=$movies['movie_id'];
+        $result_query=mysqli_query($connect,$query);
+        
+    echo "<section class='bottom'>";
+        while ($movies = mysqli_fetch_assoc($result_query)){
+            $title=$movies['title'];
+            $release=$movies['release_year'];
+            $synopsis=$movies['synopsis'];
+            $category=$movies['category_id'];
+            $poster=$movies['poster'];
+            $movieid=$movies['movie_id'];
 
-    echo '<div>';    
-    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
-    echo "<a class='movietitle' href=movie_detail?moid=$movieid> $title </a>"; 
-    echo '</div>' ;       
+        echo '<div>';    
+        echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
+        echo "<a class='movietitle' href=movie_detail?moid=$movieid> $title </a>"; 
+        echo '</div>' ;       
 
-}
-echo '</section>';
+    }
+    echo '</section>';
 }
 
 
