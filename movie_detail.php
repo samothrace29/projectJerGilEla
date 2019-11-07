@@ -12,12 +12,14 @@
 <!-- Material Design Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
 <link rel="stylesheet" href="style/loginregister.css">
-<title>Document</title>
+<link rel="stylesheet" href="style/movie_detail.css">
+
+<title>Movie Detail</title>
 </head>
 <body>
     <?php include_once "menu.php"; ?>
     <?php include_once "formLogReg.html"; ?>
-    
+   
     
 
 
@@ -39,7 +41,7 @@
 </html>
 
 <?php 
-var_dump($_GET);
+
 
 
 $movieid=$_GET['moid'];
@@ -51,20 +53,40 @@ $db_found = mysqli_select_db($connect,'projectejg');
 if($db_found){
 
    
-    $query="SELECT * FROM movies WHERE movie_id=$movieid";
+    $query="SELECT m.*,c.category FROM movies m join categories c on m.category_id = c.category_id WHERE movie_id=$movieid";
+   
+   
+    
     $result_query=mysqli_query($connect,$query);
-
+    
+    
+    
     $movie = mysqli_fetch_assoc($result_query);
 
     $title=$movie['title'];
     $release=$movie['release_year'];
     $synopsis=$movie['synopsis'];
-    $category=$movie['category_id'];
+    $category=$movie['category'];
     $poster=$movie['poster'];
     $movieid=$movie['movie_id'];
+    $location=$movie['file_location'];
+
+    echo "<main>";
+    echo "<section class='pic'>",
+    "<img src='database/movie_posters/$poster' height='400px' width='300px'>.<br>",
+    "<p><strong>Release Date:</strong>  $release</p>";
+    echo "</section>";
+    echo "<section class='title'>",
+    "<div class='titcat'>",
+    "<p><strong>Movie title:</strong> $title </p>",
+    "<p><strong>Category:</strong> $category </p>".'<br>',
+    "</div>",
+    "<p><strong>Description:</strong> $synopsis</p>".'<br>',
+    "<p><strong>File path: $location</p>";
+    echo "</section>";
+    echo "</main>";
 
 
-    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
 
 }
 

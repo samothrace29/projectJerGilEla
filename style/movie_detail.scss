@@ -1,0 +1,22 @@
+main{
+    width: 1200px;
+    margin: auto;
+    display: flex;
+    margin-top: 100px;
+}
+
+.pic{
+ 
+    p{
+        margin-top:25px;
+    }
+}
+
+.title{
+    margin-left:50px;
+    margin-right:200px;
+    .titcat{
+        display:flex;
+        justify-content: space-between;
+    }
+}
