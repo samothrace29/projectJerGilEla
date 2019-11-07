@@ -19,6 +19,7 @@
 include 'function.php';
 include_once 'menu.php';
 define('SITE_ROOT', realpath(dirname(__FILE__)));
+var_dump($_POST);
 
 if (isset($_POST['submit'])) {
 
@@ -52,7 +53,7 @@ if (isset($_POST['submit'])) {
         VALUES('" . $_POST['title'] . "', 
         '" . $_POST['release_year'] . "', 
         '" . $_POST['synopsis'] . "' , 
-        (select category_id FROM categories WHERE category = '" . 'drama' . "'))";
+        (select category_id FROM categories WHERE category = '" . $_POST['category_list'] . "'))";
         // Send an SQL request to our DB
         $categories = queryDatabase("SELECT * FROM categories c INNER JOIN movies m ON m.category_id = c.category_id");
 
