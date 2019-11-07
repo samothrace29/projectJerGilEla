@@ -54,7 +54,7 @@ echo '<section>';
         $category=$movies['category'];
         $catcun=$movies['count(*)'];
         echo '<div>';
-        echo "<a href=>$category($catcun) </a>";
+        echo "<a href=movies.php?$category>$category($catcun) </a>";
         echo '</div>';
 
 
@@ -73,10 +73,11 @@ echo '<section>';
         $synopsis=$movies['synopsis'];
         $category=$movies['category_id'];
         $poster=$movies['poster'];
- 
+        $movieid=$movies['movie_id'];
+
     echo '<div>';    
-    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>";
-    echo "<p> Title: $title </p>"; 
+    echo "<img src='database/movie_posters/$poster' height='250px' width='200px'>.<br>";
+    echo "<a class='movietitle' href=movies?$movieid> $title </a>"; 
     echo '</div>' ;       
 
 }

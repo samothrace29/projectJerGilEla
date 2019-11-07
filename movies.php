@@ -37,3 +37,21 @@
 
 </body>
 </html>
+
+<?php 
+var_dump($_GET);
+
+require_once 'connect.php';
+$connect = mysqli_connect(DB_SERVER,DB_USER,DB_PASSWORD);
+$db_found = mysqli_select_db($connect,'projectejg');
+
+if($db_found){
+
+echo 'db found';
+
+}
+
+
+
+
+?>
