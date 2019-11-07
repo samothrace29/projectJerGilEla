@@ -1,0 +1,36 @@
+main{
+    width: 1200px;
+    margin: auto;
+}
+.catalogue_div_image {
+    width : 20%;
+    display: flex;
+    justify-content: space-around;
+
+    img{
+        margin: auto;
+        width: 150px;
+    }
+}
+.catalogue_showAllMovies{
+    margin : auto;
+}
+.catalogue_div_description{
+    width: 60%;
+}
+
+.catalogue_OneMovie{
+    display: flex;
+    justify-content: space-between;
+}
+.catalogue_div_Button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width : 20%;
+}
+.catalogue_pagination {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
