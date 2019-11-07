@@ -74,7 +74,7 @@ $db_found = mysqli_select_db($connect,'projectejg');
 if (isset($_POST['submit'])) {
     var_dump($_FILES);
     
-    $destinationDir = '/uploads/';
+    $destinationDir = '/database/movie_posters';
     $destinationFilePath = $destinationDir . basename($_FILES['my_file']['name']);
 
     if ($_FILES['my_file']['error'] != UPLOAD_ERR_OK) {
@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
             $fileName = '';
             do {
                 $fileName = $shaFile . $nbFiles . '.' . $extFoundInArray;
-                $fullPath = 'uploads' . $fileName;
+                $fullPath = '/database/movie_posters' . $fileName;
                 $nbFiles++;
             } while (file_exists($fullPath));
             $moved = move_uploaded_file($_FILES['my_file']['tmp_name'], $fullPath);
@@ -110,11 +110,12 @@ if (isset($_POST['submit'])) {
             } else
                 echo "File successfully saved <br>";
             $user = $_SESSION['user'];
-            require_once 'database.php';
+
+            require_once 'connect.php';
             //connect to the database
             $connect = mysqli_connect(DB_SERVER, DB_USER, DB_PASSWORD);
             $query = "UPDATE movies SET poster = '" . $fileName . "'";
-            $db_found = mysqli_select_db($connect, 'moviedb');
+            $db_found = mysqli_select_db($connect, 'projectejg');
             $result_query = mysqli_query($connect, $query);
             if ($result_query)
                 echo '<img src="uploads' . $fileName . '">';
