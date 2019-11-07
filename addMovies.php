@@ -23,7 +23,7 @@ var_dump($_POST);
 
 if (isset($_POST['submit'])) {
 
-    echo "hello";
+    //echo "hello";
     
     if (!empty($_POST)) {
         $errors = array();
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
         $error++;
     }
     
-    echo "hello";
+    //echo "hello";
 	if (count($errors) === 0) {
         
         $query = "INSERT INTO movies(title, release_year, synopsis, category_id) 
@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
         // Send an SQL request to our DB
         $categories = queryDatabase("SELECT * FROM categories c INNER JOIN movies m ON m.category_id = c.category_id");
 
-        echo "lhlkhklhjlk";
+        //echo "lhlkhklhjlk";
         if($categories){
             
        
