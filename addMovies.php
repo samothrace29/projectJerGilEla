@@ -74,6 +74,9 @@ $db_found = mysqli_select_db($connect,'projectejg');
 if (isset($_POST['submit'])) {
     var_dump($_FILES);
     
+    $destinationDir = '/uploads/';
+    $destinationFilePath = $destinationDir . basename($_FILES['my_file']['name']);
+
     if ($_FILES['my_file']['error'] != UPLOAD_ERR_OK) {
         echo 'Upload Error';
     } else {
@@ -101,6 +104,7 @@ if (isset($_POST['submit'])) {
                 $nbFiles++;
             } while (file_exists($fullPath));
             $moved = move_uploaded_file($_FILES['my_file']['tmp_name'], $fullPath);
+
             if (!$moved) {
                 echo 'Error error';
             } else
@@ -122,12 +126,11 @@ if (isset($_POST['submit'])) {
 
 ?>
 <body>
-
     <main>
         <div id="addMovie">
             <h2>Add a new movie to the database</h2>
 
-	        <form action="#" method="POST">
+	        <form enctype="multipart/form-data" action="#" method="POST">
 
             <label>Movie Title:</label>
             <br>
@@ -157,19 +160,18 @@ if (isset($_POST['submit'])) {
             <br><br>
             
             <h3>Upload Movie Poster:</h3>
-            <form enctype="multipart/form-data" action="" method="post">
+            
             <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
             <br>
             <label>Select a file:</label>
             <br><br>
-            <input name="category" type="file" name="my_file">
+            <input  type="file" name="my_file">
             <br><br>
             <input type="submit" name="submit" value="Submit New Movie">
-        
-            
+            </form>
         </div>
         
-    </form>
+   
         <!--        
         <h3>Upload Movie Poster:</h3>
         <form enctype="multipart/form-data" action="" method="post">

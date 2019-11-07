@@ -25,7 +25,50 @@
 
     ?>
 
+<div id="editMovie">
+            <h2>Edit a movie in the database</h2>
 
+	        <form enctype="multipart/form-data" action="#" method="POST">
+
+            <label>Movie Title:</label>
+            <br>
+            <input type="text" name="title">
+            <br><br>
+            <label>Movie Release Year:</label>
+            <br>
+            <input type="number" name="release_year" maxlength = "4">
+            <br><br>
+            <label>Synopsis:</label>
+            <br>
+            <textarea name="synopsis" cols="30" rows="10" placeholder="Write your blurb here..."></textarea>
+            <br><br>
+            <label>Category:</label>
+            <br>
+            <select name="category_list">
+            <option>
+
+            <?php 
+            $categories = queryDatabase("SELECT * FROM categories"); 
+            //var_dump($categories); 
+            for ($i=0 ; $i<count($categories); $i++) { ?>
+            <option><?php echo $categories[$i]['category']; ?>
+            <?php } ?>
+
+            </select>
+            <br><br>
+            
+            <h3>Upload Movie Poster:</h3>
+            
+            <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+            <br>
+            <label>Select a file:</label>
+            <br><br>
+            <input name="category" type="file" name="my_file">
+            <br><br>
+            <input type="submit" name="submit" value="Submit New Movie">
+        
+	        </form>
+        </div>
 
     </main>
     </body>
